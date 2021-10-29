@@ -1,5 +1,4 @@
 from math import sqrt
-import operator as op
 
 
 def cast(char: str):
@@ -26,22 +25,19 @@ def cast_characters(char_list: list) -> list:
 
 
 def solver(numbers_operators_list: list):
-    operators = {"+": op.add, "-": op.sub, "/": op.truediv, "*": op.mul, "SQRT": sqrt, "MAX": max}
     stack = []
     for item in numbers_operators_list:
         if type(item) is not str:
             stack.append(item)
+        elif item == "SQRT":
+            stack.append(sqrt(stack.pop()))
         else:
-            # TODO: implement the sqrt ans max operators
-            second_operand = stack.pop()
-            first_operand = stack.pop()
-            new_item = operators[item](first_operand, second_operand)
+            second_operand = str(stack.pop())
+            first_operand = str(stack.pop())
+            new_item = eval(first_operand + item + second_operand)
             stack.append(new_item)
 
-    if len(stack) > 1:
-        solver(stack)
-    else:
-        return stack.pop()
+    return stack.pop()
 
 
 # Press the green button in the gutter to run the script.

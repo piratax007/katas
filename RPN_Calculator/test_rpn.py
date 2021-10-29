@@ -22,3 +22,5 @@ class Test(TestCase):
         self.assertEqual(solver([20, 5, "/"]), 4, "Should be 4")
         self.assertEqual(solver([4, 2, "+", 3, "-"]), 3, "Should be 3")
         self.assertEqual(solver([3, 5, 8, "*", 7, "+", "*"]), 141, "Should be 141")
+        self.assertEqual(solver([16, "SQRT"]), 4, "Should be 4")
+        self.assertEqual(solver([2, 9, "SQRT", "+"]), 5, "Should be 5")
