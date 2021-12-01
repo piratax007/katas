@@ -29,3 +29,6 @@ class Test(TestCase):
 
     def test_polypeptide_translation(self):
         self.assertEqual(dnatt.polypeptide_translation("CATGCCCTAA"), ["LGH", "RA", "-GM", "HAL", "CP", "MP-"], "")
+
+    def test_validate_peptides(self):
+        self.assertEqual(dnatt.validate_peptides("CATGCCCTAA"), ["", "MP"], "")

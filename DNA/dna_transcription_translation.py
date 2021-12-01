@@ -24,7 +24,7 @@ def change_pattern(sequence: str, pattern: dict) -> str:
 def split_in_sets_of_length_3(sequence: str) -> list:
     partitions = []
     for i in range(0, len(sequence), 3):
-        partition = sequence[i: i+3]
+        partition = sequence[i: i + 3]
 
         if len(partition) == 3:
             partitions.append(partition)
@@ -75,3 +75,23 @@ def polypeptide_translation(dna_sequence: str) -> list:
         polypeptides.append(polypeptide_for_codon)
 
     return polypeptides
+
+
+def validate_peptides(dna_sequence: str) -> list:
+    proteins = []
+
+    peptides = polypeptide_translation(dna_sequence)
+    for peptide in peptides:
+        possible_protein = ""
+        for i in peptide:
+            if i == "M":
+                possible_protein += i
+            elif "M" in possible_protein and i != "-":
+                possible_protein += i
+            elif i == "-":
+                proteins.append(possible_protein)
+                break
+            else:
+                break
+
+    return proteins
