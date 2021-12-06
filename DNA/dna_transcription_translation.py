@@ -14,11 +14,11 @@ def rna_transcription(dna_sequences: (str, str)) -> (str, str):
 
 
 def change_pattern(sequence: str, pattern: dict) -> str:
-    temporal_sequence = []
+    complement_sequence = []
     for element in sequence[::-1]:
-        temporal_sequence.append(pattern[element])
+        complement_sequence.append(pattern[element])
 
-    return "".join(temporal_sequence)
+    return "".join(complement_sequence)
 
 
 def split_in_sets_of_length_3(sequence: str) -> list:

@@ -4,6 +4,8 @@ import dna_transcription_translation as dnatt
 
 class Test(TestCase):
     def test_dna_and_antisense_sequences(self):
+        self.assertEqual(dnatt.dna_and_antisense_sequences("A"), ("A", "T"), "Output for a single nucleotide")
+        self.assertEqual(dnatt.dna_and_antisense_sequences(""), ("", ""), "Output for an empty input")
         self.assertEqual(dnatt.dna_and_antisense_sequences("AGCTAC"), ("AGCTAC", "GTAGCT"),
                          "The output must be the adn_sequence and his antisense")
         self.assertEqual(dnatt.dna_and_antisense_sequences("CATGCCCTAA"), ("CATGCCCTAA", "TTAGGGCATG"),
