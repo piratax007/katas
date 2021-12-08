@@ -93,20 +93,18 @@ def polypeptide_translation(dna_sequence: str) -> list:
 
 
 def validate_peptides(dna_sequence: str) -> list:
-    proteins = []
+    valid_polypeptides = []
 
-    peptides = polypeptide_translation(dna_sequence)
-    for peptide in peptides:
-        possible_protein = ""
-        for i in peptide:
-            if i == "M":
-                possible_protein += i
-            elif "M" in possible_protein and i != "-":
-                possible_protein += i
-            elif i == "-":
-                proteins.append(possible_protein)
-                break
-            else:
-                break
+    polypeptides = polypeptide_translation(dna_sequence)
+    for polypeptide in polypeptides:
+        if "M" in polypeptide:
+            start = polypeptide.index("M")
+        else:
+            continue
 
-    return proteins
+        if "-" not in polypeptide or start > polypeptide.index("-"):
+            valid_polypeptides.append(polypeptide[start:])
+        else:
+            valid_polypeptides.append(polypeptide[start:polypeptide.index("-")])
+
+    return valid_polypeptides
