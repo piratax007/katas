@@ -37,23 +37,37 @@ def rna_threesomes(dna_sequence: str) -> list:
     rna_sequences = rna_transcription(dna_and_antisense_sequences(dna_sequence))
     for i in range(2):
         for sub_sequence in [rna_sequences[i], rna_sequences[i][2:], rna_sequences[i][1:]]:
-            _sets.append(split_in_sets_of_length_3(sub_sequence))
+            threesomes.append(split_in_threesomes(sub_sequence))
 
-    return _sets
+    return threesomes
+
+
+def load_data(file: str):
+    with open(file) as json_file:
+        data = json.load(json_file)
+
+    return data
+
+
+def rna_threesomes_to_threesomes_peptides(codons_data: dict, rna_threesomes_list: list) -> list:
+    threesomes_peptides = []
+    for threesome in rna_threesomes_list:
+        threesomes_peptides.append(codons_data[threesome].lower())
+
+    return threesomes_peptides
 
 
 def rna_codons_reading(dna_sequence: str) -> list:
-    with open('codons.json') as json_file:
-        sets = json.load(json_file)
+    codons_dict = load_data('codons.json')
+    peptides = []
 
-    codons = []
-    rna_partitions = rna_sets(dna_sequence)
-    for partition in rna_partitions:
-        codons_for_partition = []
-        for sub_partition in partition:
-            codons_for_partition.append(sets[sub_partition].lower())
+    codons = rna_threesomes(dna_sequence)
 
-        codons.append(codons_for_partition)
+    for codons_partition in codons:
+        peptides_for_codons_partition = rna_threesomes_to_threesomes_peptides(codons_dict, codons_partition)
+        peptides.append(peptides_for_codons_partition)
+
+    return peptides
 
     return codons
 
