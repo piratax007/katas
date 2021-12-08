@@ -32,8 +32,8 @@ def split_in_threesomes(sequence: str) -> list:
     return partitions
 
 
-def rna_sets(dna_sequence: str) -> list:
-    _sets = []
+def rna_threesomes(dna_sequence: str) -> list:
+    threesomes = []
     rna_sequences = rna_transcription(dna_and_antisense_sequences(dna_sequence))
     for i in range(2):
         for sub_sequence in [rna_sequences[i], rna_sequences[i][2:], rna_sequences[i][1:]]:
