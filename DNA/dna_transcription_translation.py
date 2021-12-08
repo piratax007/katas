@@ -21,7 +21,7 @@ def change_pattern(sequence: str, pattern: dict) -> str:
     return "".join(complement_sequence)
 
 
-def split_in_sets_of_length_3(sequence: str) -> list:
+def split_in_threesomes(sequence: str) -> list:
     partitions = []
     for i in range(0, len(sequence), 3):
         partition = sequence[i: i + 3]
