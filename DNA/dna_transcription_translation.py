@@ -69,24 +69,25 @@ def rna_codons_reading(dna_sequence: str) -> list:
 
     return peptides
 
-    return codons
+
+def peptides_reading(peptides_dict: dict, peptides_partition: list) -> str:
+    polypeptide_for_peptide = ""
+    for peptide in peptides_partition:
+        if peptide == "stop":
+            polypeptide_for_peptide += "-"
+        else:
+            polypeptide_for_peptide += peptides_dict[peptide]
+
+    return polypeptide_for_peptide
 
 
 def polypeptide_translation(dna_sequence: str) -> list:
-    with open('peptides.json') as json_file:
-        peptides = json.load(json_file)
+    peptides_dict = load_data('peptides.json')
 
     polypeptides = []
-    codons = rna_codons_reading(dna_sequence)
-    for codons_set in codons:
-        polypeptide_for_codon = ""
-        for codon in codons_set:
-            if codon != "stop":
-                polypeptide_for_codon += peptides[codon]
-            else:
-                polypeptide_for_codon += "-"
-
-        polypeptides.append(polypeptide_for_codon)
+    peptides = rna_codons_reading(dna_sequence)
+    for peptides_partition in peptides:
+        polypeptides.append(peptides_reading(peptides_dict, peptides_partition))
 
     return polypeptides
 
