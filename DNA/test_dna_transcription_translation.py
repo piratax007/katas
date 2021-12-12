@@ -1,26 +1,34 @@
 from unittest import TestCase
 import dna_transcription_translation as dnatt
 
-
 class Test(TestCase):
     def test_dna_and_antisense_sequences(self):
-        self.assertEqual(dnatt.dna_and_antisense_sequences("A"), ("A", "T"), "Output for a single nucleotide")
-        self.assertEqual(dnatt.dna_and_antisense_sequences(""), ("", ""), "Output for an empty input")
+        self.assertEqual(dnatt.dna_and_antisense_sequences("A"), ("A", "T"),
+                         "The output must be a two single DNA nucleotides")
+        self.assertEqual(dnatt.dna_and_antisense_sequences(""), ("", ""),
+                         "For an empty input, the output must be an empty tuple")
         self.assertEqual(dnatt.dna_and_antisense_sequences("AGCTAC"), ("AGCTAC", "GTAGCT"),
                          "The output must be the adn_sequence and his antisense")
         self.assertEqual(dnatt.dna_and_antisense_sequences("CATGCCCTAA"), ("CATGCCCTAA", "TTAGGGCATG"),
                          "The output must be the adn_sequence and his antisense")
 
     def test_rna_transcription(self):
+        self.assertEqual(dnatt.rna_transcription(dnatt.dna_and_antisense_sequences("A")), ("U", "A"),
+                         "The output must be a two single RNA nucleotides")
+        self.assertEqual(dnatt.rna_transcription(dnatt.dna_and_antisense_sequences("")), ("", ""),
+                         "For an empty input, the output must be an empty tuple")
         self.assertEqual(dnatt.rna_transcription(dnatt.dna_and_antisense_sequences("CATGCCCTAA")),
-                         ("UUAGGGCAUG", "CAUGCCCUAA"), "The output must be a tuple of RNA sequences")
+                         ("UUAGGGCAUG", "CAUGCCCUAA"), "The output must be a tuple of two RNA sequences")
 
-    def test_split_in_sets_of_length_3(self):
-        self.assertEqual(dnatt.split_in_sets_of_length_3("CAUGCCCUAA"),
-                         ["CAU", "GCC", "CUA"], "")
+    def test_split_in_threesomes(self):
+        self.assertEqual(dnatt.split_in_threesomes("A"), [], "If the input has lesser than three nucleotides, the"
+                                                             "output is an empty list")
+        self.assertEqual(dnatt.split_in_threesomes(""), [], "An empty input result in an empty output list")
+        self.assertEqual(dnatt.split_in_threesomes("CAUGCCCUAA"),
+                         ["CAU", "GCC", "CUA"], "Return a list with corresponding threesomes")
 
-    def test_codons(self):
-        self.assertEqual(dnatt.rna_sets("CATGCCCTAA"),
+    def test_rna_threesomes(self):
+        self.assertEqual(dnatt.rna_threesomes("CATGCCCTAA"),
                          [["UUA", "GGG", "CAU"], ["AGG", "GCA"], ["UAG", "GGC", "AUG"], ["CAU", "GCC", "CUA"],
                           ["UGC", "CCU"], ["AUG", "CCC", "UAA"]], "")
 
@@ -33,4 +41,4 @@ class Test(TestCase):
         self.assertEqual(dnatt.polypeptide_translation("CATGCCCTAA"), ["LGH", "RA", "-GM", "HAL", "CP", "MP-"], "")
 
     def test_validate_peptides(self):
-        self.assertEqual(dnatt.validate_peptides("CATGCCCTAA"), ["", "MP"], "")
+        self.assertEqual(dnatt.validate_peptides("CATGCCCTAA"), ["M", "MP"], "")
