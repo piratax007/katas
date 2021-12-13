@@ -38,4 +38,4 @@ class Ant:
         else:
             self.vertical_position += 1
 
-        self.validate_edges(b.rows - 1, b.columns - 1)
+        self.validate_edges(b.columns - 1, b.rows - 1)
