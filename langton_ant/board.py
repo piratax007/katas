@@ -3,10 +3,11 @@ import ant
 
 
 class Board:
-    def __init__(self, r: int, c: int):
-        self.rows = r
-        self.columns = c
-        self.states = [[randint(0, 1) for _ in range(self.columns)] for _ in range(self.rows)]
+    def __init__(self, s: list):
+        self.states = s
+        self.rows = len(s)
+        self.columns = len(s[0])
+        self.state_switch = {0: 2, 1: 0, 2: 1}
 
     @staticmethod
     def printable_board(self, walker: ant):
