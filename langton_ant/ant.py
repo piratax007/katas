@@ -30,7 +30,7 @@ class Ant:
 
     def move(self, b: board):
         self.set_direction(b.states[self.vertical_position][self.horizontal_position])
-        b.update_states(self)
+        b.update_cell_state(self)
 
         if self.current_direction == "E":
             self.horizontal_position += 1
