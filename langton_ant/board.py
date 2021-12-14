@@ -8,9 +8,13 @@ class Board:
         self.columns = c
         self.grid = [[randint(0, 1) for _ in range(self.columns)] for _ in range(self.rows)]
 
-    def set_cell_state(self, walker: ant):
-        if self.grid[walker.vertical_position][walker.horizontal_position] != 0:
-            self.grid[walker.vertical_position][walker.horizontal_position] = 0
+        return printable_board
+
+    def update_states(self, walker: ant):
+        if self.states[walker.vertical_position][walker.horizontal_position] == 1:
+            self.states[walker.vertical_position][walker.horizontal_position] = 0
+        elif self.states[walker.vertical_position][walker.horizontal_position] == 0:
+            self.states[walker.vertical_position][walker.horizontal_position] = 2
         else:
             self.grid[walker.vertical_position][walker.horizontal_position] = 1
 

@@ -12,8 +12,10 @@ class Ant:
         translate_direction = {0: "E", 1: "N", 2: "O", 3: "S"}
         if cell_state == 1:
             self.current_direction = translate_direction[(self.directions[self.current_direction] - 1) % 4]
-        else:
+        elif cell_state == 0:
             self.current_direction = translate_direction[(self.directions[self.current_direction] + 1) % 4]
+        else:
+            pass
 
     def validate_edges(self, right_boundary: int, bottom_boundary: int):
         if self.horizontal_position < 0 and self.current_direction == "O":
