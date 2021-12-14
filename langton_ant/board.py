@@ -10,25 +10,23 @@ class Board:
         self.state_switch = {0: 2, 1: 0, 2: 1}
 
     @staticmethod
-    def printable_board(self, walker: ant):
+    def printable_board(self, a: ant):
         printable_board = [[" _" + str(self.states[i][j]) for j in range(self.columns)] for i in range(self.rows)]
-        printable_board[walker.vertical_position][walker.horizontal_position] = printable_board[walker.vertical_position][walker.horizontal_position].replace("_", walker.current_direction)
+        printable_board[a.vertical_position][a.horizontal_position] = \
+            printable_board[a.vertical_position][a.horizontal_position].replace("_", a.current_direction)
 
         return printable_board
 
-    def update_states(self, walker: ant):
-        if self.states[walker.vertical_position][walker.horizontal_position] == 1:
-            self.states[walker.vertical_position][walker.horizontal_position] = 0
-        elif self.states[walker.vertical_position][walker.horizontal_position] == 0:
-            self.states[walker.vertical_position][walker.horizontal_position] = 2
-        else:
-            self.states[walker.vertical_position][walker.horizontal_position] = 1
+    def update_cell_state(self, a: ant):
+        self.states[a.vertical_position][a.horizontal_position] = \
+            self.state_switch[self.states[a.vertical_position][a.horizontal_position]]
 
-        self.printable_board(self, walker)
+        self.printable_board(self, a)
 
-    def draw(self, hormiga: ant):
+    def draw(self, a: ant):
         align_factor = len(str(self.rows))
 
         print(" " * align_factor + "-" * (self.columns * 3 + 3))
-        print(*[f"{i:>{align_factor}}|" + "".join(self.printable_board(self, hormiga)[i]) + " |" for i in range(self.rows)], sep='\n')
+        print(*[f"{i:>{align_factor}}|" + "".join(self.printable_board(self, a)[i]) + " |" for i in range(self.rows)],
+              sep='\n')
         print(" " * align_factor + "-" * (self.columns * 3 + 3))
