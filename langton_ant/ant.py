@@ -29,8 +29,9 @@ class Ant:
             self.vertical_position = 0
 
     def move(self, b: board):
-        self.set_direction(b.grid[self.vertical_position][self.horizontal_position])
-        b.set_cell_state(self)
+        self.set_direction(b.states[self.vertical_position][self.horizontal_position])
+        b.update_states(self)
+
         if self.current_direction == "E":
             self.horizontal_position += 1
         elif self.current_direction == "N":
