@@ -40,7 +40,9 @@ class Ant:
             self.vertical_position -= 1
         elif self.current_direction == "O":
             self.horizontal_position -= 1
-        else:
+        elif self.current_direction == "S":
             self.vertical_position += 1
+        else:
+            pass
 
         self.validate_edges(b.columns - 1, b.rows - 1)
