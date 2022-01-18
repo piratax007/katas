@@ -16,6 +16,9 @@ class Test(TestCase):
         self.assertEqual(1234, rmc.validate_input(1234))
 
     def test_separate_the_input_number_into_a_list_of_digits(self):
+        self.assertEqual([0, 0, 0, 5], rmc.separate_into_digits(5))
+        self.assertEqual([0, 0, 5, 7], rmc.separate_into_digits(57))
+        self.assertEqual([0, 8, 5, 3], rmc.separate_into_digits(853))
         self.assertListEqual([1, 2, 3, 4], rmc.separate_into_digits(1234))
 
     def test_convert_an_arabic_integer_to_roman_numeral(self):
