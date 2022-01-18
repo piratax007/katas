@@ -25,7 +25,11 @@ def assign_symbol(val: int, position: str) -> str:
         "thousands": "M",
     }
 
-    next_pivot = {"units": "tens", "tens": "hundreds", "hundreds": "thousands"}
+    next_pivot = {
+        "units": "tens",
+        "tens": "hundreds",
+        "hundreds": "thousands"
+    }
 
     if val < 4:
         return pivots[position] * val
