@@ -6,10 +6,10 @@ def validate_input(n: int) -> int:
 
 
 def separate_into_digits(n: int) -> list:
-    list_of_digits = []
+    list_of_digits = [0, 0, 0, 0]
 
-    for _, digit in enumerate(str(n)):
-        list_of_digits.append(int(digit))
+    for i, digit in enumerate(str(n)[::-1]):
+        list_of_digits[3 - i] = int(digit)
 
     return list_of_digits
 
