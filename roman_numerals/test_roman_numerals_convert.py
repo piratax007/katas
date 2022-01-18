@@ -7,7 +7,9 @@ class Test(TestCase):
     def test_verify_that_the_input_number_is_a_positive_integer(self):
         with self.assertRaises(ValueError):
             rmc.validate_input(-10)
+        with self.assertRaises(ValueError):
             rmc.validate_input(3.141592)
+        with self.assertRaises(ValueError):
             rmc.validate_input(4000)
 
     def test_convert_the_input_integer_to_a_string(self):
