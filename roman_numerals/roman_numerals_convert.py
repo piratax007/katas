@@ -47,7 +47,7 @@ def assign_symbol(val: int, position: str) -> str:
         return pivots[position] + pivots[next_pivot[position]]
 
 
-def arabic_to_roman(arabic_int: int) -> str:
+def roman_from(arabic_int: int) -> str:
     dec_int = separate_into_digits(validate_input(arabic_int))
 
     if len(dec_int) == 1:
