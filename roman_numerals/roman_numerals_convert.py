@@ -50,16 +50,19 @@ def assign_symbol(val: int, position: str) -> str:
 def roman_from(arabic_int: int) -> str:
     dec_int = separate_into_digits(validate_input(arabic_int))
 
-    if len(dec_int) == 1:
-        return assign_symbol(dec_int[0], "units")
+    positions = {
+        0: "thousands",
+        1: "hundreds",
+        2: "tens",
+        3: "units"
+    }
 
-    if len(dec_int) == 2:
-        return assign_symbol(dec_int[0], "tens") + assign_symbol(dec_int[1], "units")
+    roman_numeral = ""
 
-    if len(dec_int) == 3:
-        return assign_symbol(dec_int[0], "hundreds") + assign_symbol(dec_int[1], "tens") + \
-               assign_symbol(dec_int[2], "units")
+    for i, integer in enumerate(dec_int):
+        if dec_int[i] == 0:
+            continue
 
-    if len(dec_int) == 4:
-        return assign_symbol(dec_int[0], "thousands") + assign_symbol(dec_int[1], "hundreds") + \
-               assign_symbol(dec_int[2], "tens") + assign_symbol(dec_int[3], "units")
+        roman_numeral += assign_symbol(integer, positions[i])
+
+    return roman_numeral
