@@ -13,10 +13,10 @@ class Test(TestCase):
             rmc.validate_input(4000)
 
     def test_convert_the_input_integer_to_a_string(self):
-        self.assertEqual("1234", rmc.validate_input(1234))
+        self.assertEqual(1234, rmc.validate_input(1234))
 
     def test_separate_the_input_number_into_a_list_of_digits(self):
-        self.assertListEqual([1, 2, 3, 4], rmc.separate_into_digits("1234"))
+        self.assertListEqual([1, 2, 3, 4], rmc.separate_into_digits(1234))
 
     def test_convert_an_arabic_integer_to_roman_numeral(self):
         self.assertEqual("I", rmc.arabic_to_roman(1))
