@@ -12,9 +12,6 @@ class Test(TestCase):
         with self.assertRaises(ValueError):
             rmc.validate_input(4000)
 
-    def test_convert_the_input_integer_to_a_string(self):
-        self.assertEqual(1234, rmc.validate_input(1234))
-
     def test_separate_the_input_number_into_a_list_of_digits(self):
         self.assertEqual([0, 0, 0, 5], rmc.separate_into_digits(5))
         self.assertEqual([0, 0, 5, 7], rmc.separate_into_digits(57))
