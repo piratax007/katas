@@ -1,14 +1,14 @@
-def validate_input(n: int) -> str:
+def validate_input(n: int) -> int:
     if isinstance(n, float) or not (0 < n < 4000):
         raise ValueError("The input must be a positive integer")
 
-    return str(n)
+    return n
 
 
-def separate_into_digits(int_as_str: str) -> list:
+def separate_into_digits(n: int) -> list:
     list_of_digits = []
 
-    for _, digit in enumerate(int_as_str):
+    for _, digit in enumerate(str(n)):
         list_of_digits.append(int(digit))
 
     return list_of_digits
