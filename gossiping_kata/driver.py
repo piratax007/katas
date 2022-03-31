@@ -2,10 +2,10 @@ class Driver:
     def __init__(self, own_gossip: str, route: list):
         self.own_gossip = own_gossip
         self.known_gossips = {own_gossip}
-        if len(route) > 1:
-            self.route = route
-        else:
+        if len(route) < 2:
             raise Exception("at least two stops must be in the route")
+
+        self.route = route
         self.current_stop = self.route[0]
 
     def update_gossips(self, other_driver) -> set:
