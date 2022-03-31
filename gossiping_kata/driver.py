@@ -8,6 +8,6 @@ class Driver:
         self.route = route
         self.current_stop = self.route[0]
 
-    def update_gossips(self, other_driver) -> set:
+    def add_unknown_gossips(self, other_driver):
         for gossip in other_driver.known_gossips:
             self.known_gossips.add(gossip)
