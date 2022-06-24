@@ -1,22 +1,70 @@
 
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.coverage
+
+.idea/
+Go/.idea/
+Go/AdventOfCode_FI/.idea/
+Go/AdventOfCode_FI/go.mod
+Go/AdventOfCode_FI/go.sum
+Go/AdventOfCode_FI/day1/.idea/
+Go/anagrama/.idea/
+Go/anagrama/go.mod
+Go/anagrama/go.sum
+Go/kata_mock/go.mod
+Go/kata_mock/go.sum
 DNA/.idea/
-
 DNA/__pycache__/
-
 DNA/bin/
-
 DNA/lib/
-
 DNA/Ola_Bini/
-
 DNA/pyvenv.cfg
-
+gossiping_kata/__pycache__/
 langton_ant/.idea/
-
 langton_ant/__pycache__/
-
 langton_ant/bin/
-
 langton_ant/lib/
-
 langton_ant/pyvenv.cfg
+langton_ant/new_python_version/.coverage
+langton_ant/new_python_version/__pycache__/
+langton_ant/go_version/.idea/
+langton_ant/go_version/go.mod
+langton_ant/go_version/go.sum
+katas_maker/.idea/
+

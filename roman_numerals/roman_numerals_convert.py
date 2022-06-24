@@ -39,7 +39,7 @@ def assign_symbol(val: int, position: str) -> str:
 
     if val == 5:
         return pivots["half_" + next_pivot[position]]
-    
+
     if 5 < val < 9:
         return pivots["half_" + next_pivot[position]] + pivots[position] * (val - 5)
 
