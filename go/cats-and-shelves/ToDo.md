@@ -1,0 +1,6 @@
+-[X] In each jump, evaluate if `finish` is up, upper
+  -[X] if `finish` is up one shelve, only one size jump is needed to reach `finish`
+  -[X] if `finish` is exactly two shelve up, are needed two one size jumps to reach `finish`
+  -[X] if `finish` is upper:
+    -[X] if `finish` is upper exactly three shelves, only one two size jump is needed to reach `finish`
+    -[X] if `finish` is upper more than three shelves, the new start will be in the next shelve with one size jump distance
