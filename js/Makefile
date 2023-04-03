@@ -6,7 +6,7 @@ create-mocha-image:
 	docker build -t js-mocha:debian-bookworm $(PWD)/$(TEST_MOCHA_FRAMEWORK)
 
 mocha-test:
-	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t js-mocha npm test
+	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t js-mocha:debian-bookworm npm test
 
 create-jest-image:
 	docker build -t js-jest:alpine-latest $(PWD)/$(TEST_JEST_FRAMEWORK)
