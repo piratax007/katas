@@ -1,0 +1,8 @@
+{
+    "scripts": {
+	    "test": "jest /code/test.js"
+	},
+	"dependencies": {
+		"jest": "^29.5.0"
+	}
+}
