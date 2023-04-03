@@ -12,4 +12,4 @@ create-jest-image:
 	docker build -t js-jest:alpine-latest $(PWD)/$(TEST_JEST_FRAMEWORK)
 
 jest-test:
-	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t js-jest npm test
+	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t js-jest:alpine-latest npm test
