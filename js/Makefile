@@ -1,15 +1,15 @@
 KATA_DIRECTORY=$1
+TEST_MOCHA_FRAMEWORK=mocha_test/
+TEST_JEST_FRAMEWORK=jest_test/
 
-default: create-image
+create-mocha-image:
+	docker build -t js-mocha:debian-bookworm $(PWD)/$(TEST_MOCHA_FRAMEWORK)
 
-create-image:
-	docker build -t js-katas -f Dockerfile .
+mocha-test:
+	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t js-mocha npm test
 
-mocha: create-image
-	docker run -d --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src -t js-katas npm install mocha chai
+create-jest-image:
+	docker build -t js-jest:alpine-latest $(PWD)/$(TEST_JEST_FRAMEWORK)
 
-test:
-	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src -t js-katas npm test
-
-clean:
-	docker run -d --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src -t js-katas rm -r node_modules package-lock.json
+jest-test:
+	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t js-jest npm test

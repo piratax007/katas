@@ -66,7 +66,7 @@ describe('Test suite kata: game of life - next generation', function() {
 	    generation = newTestGrid([], [3, 5]);
 	    assert.equal(setNextGenerationState(generation, [0, 0]), 'Dead', 'The cell (0, 0) will be dead in the next generation');
 
-	    generation = newTestGrid([[2, 4]], [3, 6]);
+	    generation = newTestGrid([[2, 4], [1, 5]], [3, 6]);
 	    assert.equal(setNextGenerationState(generation, [1, 5]), 'Dead', 'The cell (1, 5) will be dead in the next generation');
 	});
 
@@ -74,7 +74,7 @@ describe('Test suite kata: game of life - next generation', function() {
 	    let generation = newTestGrid([[0, 0], [0, 1], [1, 1], [2, 0], [2, 1]], [4, 4]);
 	    assert.equal(setNextGenerationState(generation, [1, 0]), 'Dead', 'The cell (1, 0) will be dead in the next generation because has five neighbours alive');
 
-	    generation = newTestGrid([[0, 4], [1, 2], [1, 3], [3, 1], [3, 3], [4, 0]], [5, 5]);
+	    generation = newTestGrid([[0, 4], [1, 2], [1, 3], [2, 2], [3, 1], [3, 3], [4, 0]], [5, 5]);
 	    assert.equal(setNextGenerationState(generation, [2, 2]), 'Dead', 'The cell (2, 2), will be dead because has four neighbours alive');
 	});
 

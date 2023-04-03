@@ -1,7 +1,7 @@
 {
     "type": "module",
     "scripts": {
-        "test": "mocha"
+        "test": "mocha code/test.js"
     },
     "dependencies": {
         "chai": "^4.3.7",
