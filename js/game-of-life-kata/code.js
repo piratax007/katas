@@ -8,13 +8,13 @@ function translateStates(generation) {
 
 function flatNeighboursPositions(cellIndex, boundary) {
     if (boundary === 0) {
-	return new Set([cellIndex - 1, cellIndex + 1]);
+        return new Set([cellIndex - 1, cellIndex + 1]);
     }
     
     return new Set([
-	cellIndex - (boundary + 2), cellIndex - (boundary + 1), cellIndex - boundary,
-	cellIndex - 1, cellIndex + 1,
-	cellIndex + boundary, cellIndex + (boundary + 1), cellIndex + (boundary + 2)
+        cellIndex - (boundary + 2), cellIndex - (boundary + 1), cellIndex - boundary,
+        cellIndex - 1, cellIndex + 1,
+        cellIndex + boundary, cellIndex + (boundary + 1), cellIndex + (boundary + 2)
     ]);
 }
 
@@ -27,7 +27,7 @@ const isCorner = function(grid, cellCoordinates) {
     const columns = grid[0].length;
 
     if (compareArrays(cellCoordinates, [0, 0]) || compareArrays(cellCoordinates, [0, columns-1]) || compareArrays(cellCoordinates, [rows-1, 0]) || compareArrays(cellCoordinates, [rows-1, columns-1])) {
-	return true;
+        return true;
     }
 
     return false;
@@ -38,19 +38,19 @@ const cornerPosition = function (grid, cellCoordinates) {
     const columns = grid[0].length;
     
     if (compareArrays(cellCoordinates, [0, 0])) {
-	return "Top Left";
+        return "Top Left";
     }
 
     if (compareArrays(cellCoordinates, [0, columns-1])) {
-	return "Top Right";
+        return "Top Right";
     }
 
     if (compareArrays(cellCoordinates, [rows-1, 0])) {
-	return "Bottom Left";
+        return "Bottom Left";
     }
 
     if (compareArrays(cellCoordinates, [rows-1, columns-1])) {
-	return "Bottom Right";
+        return "Bottom Right";
     }
 
     return "is not a corner";
@@ -68,9 +68,9 @@ const cornerNeighbours = function (grid, cornerCoordinates) {
 	    return [grid[0].length - 2, 2 * (grid[0].length - 1), 2 * grid[0].length - 1];
 	case "Bottom Left":
 	    return [
-		maxFlatIndex - grid[0].length + 2,
-		maxFlatIndex - 2 * grid[0].length + 2,
-		maxFlatIndex - 2 * grid[0].length + 1,
+			maxFlatIndex - grid[0].length + 2,
+			maxFlatIndex - 2 * grid[0].length + 2,
+			maxFlatIndex - 2 * grid[0].length + 1,
 	    ];
 	case "Bottom Right":
 	    return [maxFlatIndex - 1, maxFlatIndex - grid[0].length, maxFlatIndex - grid[0].length - 1];
@@ -79,9 +79,9 @@ const cornerNeighbours = function (grid, cornerCoordinates) {
 
 const totalNeighbours = function(generation, cellCoordinates) {
     if (isCorner(generation, cellCoordinates)) {
-	return cornerNeighbours(generation, cellCoordinates);
+        return cornerNeighbours(generation, cellCoordinates);
     } else {
-	return flatNeighboursPositions(flatCellPosition(generation, cellCoordinates), generation[0].length-1);
+        return flatNeighboursPositions(flatCellPosition(generation, cellCoordinates), generation[0].length-1);
     }
 }
 
@@ -91,8 +91,8 @@ const neighboursAlive = function (generation, cellCoordinates) {
     const statesValues = translateStates(generation);
 
     totalNeighbours(generation, cellCoordinates).forEach(neighbour => (
-	statesValues[neighbour] === undefined ? 0 : result += statesValues[neighbour])
-		      );
+		statesValues[neighbour] === undefined ? 0 : result += statesValues[neighbour])
+														);
 
     return result;
 }
@@ -110,11 +110,11 @@ function setNextGenerationState(currentGeneration, cellCoordinates) {
     const neighboursAliveCount = neighboursAlive(currentGeneration, cellCoordinates);
     
     if (deadBecomesAlive(currentState, neighboursAliveCount)) {
-	return 'Alive';
+		return 'Alive';
     }
 
     if (liveBecomesDead(currentState, neighboursAliveCount)) {
-	return 'Dead';
+		return 'Dead';
     }
 
     return currentState;
