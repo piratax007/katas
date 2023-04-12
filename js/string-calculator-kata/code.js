@@ -37,12 +37,6 @@ function numbersToBeAdded(callback) {
 
     let std = delimiters;
 
-    if (delimiters.length > 1) {
-        std = delimiters[0];
-        delimiters.forEach((d) => {rest.replace('d', std)});
-        console.log(`########### ${rest}`);
-    }
-
     return rest.split(std).map((character) => parseInt(character));
 }
 

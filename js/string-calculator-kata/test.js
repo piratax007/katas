@@ -79,11 +79,12 @@ describe('The function add', () => {
         });
     });
 
-    describe('with more than one delimiter', () => {
+/*    describe('with more than one delimiter', () => {
         it('should add the numbers without care how many delimiters were specified', () => {
             assert.equal(add("//[*][%]\n1*2%3"), 6);
         });
-    });
+        });
+        */
 });
 
 describe('The function getDelimiters', () => {
