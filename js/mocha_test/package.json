@@ -1,10 +1,12 @@
 {
     "type": "module",
     "scripts": {
-        "test": "mocha code/test.js"
+        "test": "mocha code/test.js",
+        "coverage": "nyc mocha code/test.js"
     },
     "dependencies": {
         "chai": "^4.3.7",
-        "mocha": "^10.2.0"
+        "mocha": "^10.2.0",
+        "nyc": "^15.1.0"
     }
 }
