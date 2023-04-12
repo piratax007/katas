@@ -14,15 +14,15 @@ function fieldsFrom(input) {
 
 function getDelimiters(delimitersField) {
     const regex = /\[([^\]\[\r\n]*)\]/gm;
-    let m;
+    let matches;
     const delimiters = [];
 
-    while ((m = regex.exec(delimitersField)) !== null) {
-        if (m.index === regex.lastIndex) {
+    while ((matches = regex.exec(delimitersField)) !== null) {
+        if (matches.index === regex.lastIndex) {
             regex.lastIndex++;
         }
 
-        m.forEach((match, groupIndex) => {
+        matches.forEach((match, groupIndex) => {
             if (groupIndex === 1) {
                 delimiters.push(match);
             }
