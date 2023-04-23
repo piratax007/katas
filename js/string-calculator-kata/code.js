@@ -1,5 +1,5 @@
 function fieldsFrom(input) {
-    if (input[0] === '/') {
+    if (/^\//.exec(input) !== null) {
         const fields = input.split('\n', 2);
         
         if (fields[0].includes('[')) {
@@ -22,6 +22,7 @@ function getDelimiters(delimitersField) {
             regex.lastIndex++;
         }
 
+        // perhaps a good idea is to use filter
         matches.forEach((match, groupIndex) => {
             if (groupIndex === 1) {
                 delimiters.push(match);

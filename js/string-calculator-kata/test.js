@@ -22,11 +22,11 @@ describe('The function add', () => {
             assert.equal(add("1,2"), 3);
             assert.equal(add("4,0"), 4);
             assert.equal(add("12,15"), 27);
-            assert.equal(add("112, 3"), 115);
+            assert.equal(add("112,3"), 115);
         });
     });
 
-    describe('with a string that have more than two numbers separated by commas', () => {
+    describe('with a string that have more than two numbers separated by commas and spaces after the comma', () => {
         it('returns the sum of all numbers in the given string', () => {
             assert.equal(add("1, 2, 3"), 6);
             assert.equal(add("3, 5, 6, 2"), 16);
@@ -52,15 +52,15 @@ describe('The function add', () => {
 
     describe('taking a negative number', () => {
         it('throw an exception "negatives not allowed" and the negative passed', () => {
-            assert.throws(() => {add("//,\n-1")}, Error, 'negatives not allowed: -1');
-            assert.throws(() => {add("-30, 2")}, Error, 'negatives not allowed: -30');
+            assert.throws(() => {add("//,\n-1");}, Error, 'negatives not allowed: -1');
+            assert.throws(() => {add("-30, 2");}, Error, 'negatives not allowed: -30');
         });
     });
 
     describe('taking more than a single negative number', () => {
         it('throw and exception "negatives not allowed" showing all the negatives passed', () => {
-            assert.throws(() => {add("//;\n3;-2;10;-1;5")}, Error, 'negatives not allowed: -2,-1');
-            assert.throws(() => {add("0, -1, 3, 2, -5, -7, -10, 12")}, Error, 'negatives not allowed: -1,-5,-7,-10');
+            assert.throws(() => {add("//;\n3;-2;10;-1;5");}, Error, 'negatives not allowed: -2,-1');
+            assert.throws(() => {add("0, -1, 3, 2, -5, -7, -10, 12");}, Error, 'negatives not allowed: -1,-5,-7,-10');
         });
     });
 
