@@ -19,4 +19,6 @@ func (s *kataSuite) SetupTest() {
 	s.tdir = s.T().TempDir()
 }
 
-func (s *kataSuite) Test_functionsName_testDescription() {}
+func (s *kataSuite) Test_dummy_returnsThree() {
+	s.Equal(3, dummy())
+}

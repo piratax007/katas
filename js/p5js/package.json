@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "start": "browser-sync start --server -f -w",
+        "test": "jest /code/test.js"
+    },
+    "dependencies": {
+        "jest": "^29.5.0",
+        "http-server": "^14.1.1",
+        "browser-sync": "^2.29.1"
+    }
+}
