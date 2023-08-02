@@ -1,7 +1,7 @@
 {
     "scripts": {
-        "start": "browser-sync start --server -f -w",
-        "test": "jest /code/test.js"
+        "start": "browser-sync start --server '/home/src/code' --files 'index.html' --watch",
+        "test": "jest test.js"
     },
     "dependencies": {
         "jest": "^29.5.0",

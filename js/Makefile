@@ -16,10 +16,10 @@ jest-test:
 	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t js-jest:alpine-latest npm test
 
 create-p5js-image:
-	docker build -t p5js-jest $(PWD)/$(TEST_P5JS_FRAMEWORK)
+	docker build -t p5js $(PWD)/$(TEST_P5JS_FRAMEWORK)
 
 p5js-run:
-	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t p5js-jest npm start
+	docker run --rm -p 3000:3000 -p 3001:3001 -v $(PWD)/$(KATA_DIRECTORY):/home/src/code -t p5js npm start
 
 p5js-test:
-	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t p5js-jest npm test
+	docker run --rm -v $(PWD)/$(KATA_DIRECTORY):/root/src/code -t p5js npm test
